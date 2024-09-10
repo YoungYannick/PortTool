@@ -88,6 +88,7 @@ public class PortScannerApp extends Application {
             Integer i2 = o2 == null || o2.isEmpty() ? -1 : Integer.parseInt(o2);
             return i1.compareTo(i2);
         });
+        indexCol.setPrefWidth(50);
 
         TableColumn<ProcessInfo, String> portCol = new TableColumn<>("端口号");
         portCol.setCellValueFactory(new PropertyValueFactory<>("port"));
@@ -96,6 +97,7 @@ public class PortScannerApp extends Application {
             Integer p2 = o2 == null || o2.isEmpty() ? -1 : Integer.parseInt(o2);
             return p1.compareTo(p2);
         });
+        portCol.setPrefWidth(85);
 
         TableColumn<ProcessInfo, String> idCol = new TableColumn<>("进程ID");
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -104,12 +106,15 @@ public class PortScannerApp extends Application {
             Integer pid2 = o2 == null || o2.isEmpty() ? -1 : Integer.parseInt(o2);
             return pid1.compareTo(pid2);
         });
+        idCol.setPrefWidth(85);
 
         TableColumn<ProcessInfo, String> pathCol = new TableColumn<>("进程名");
         pathCol.setCellValueFactory(new PropertyValueFactory<>("path"));
+        pathCol.setPrefWidth(200);
 
         TableColumn<ProcessInfo, String> nameCol = new TableColumn<>("进程路径");
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameCol.setPrefWidth(350); // 设置默认宽度为100
 
         table.setItems(data);
         table.getColumns().addAll(indexCol, portCol, idCol, pathCol, nameCol);
